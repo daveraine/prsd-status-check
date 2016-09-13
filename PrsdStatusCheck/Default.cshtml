@@ -1,0 +1,27 @@
+﻿@using System.Configuration
+@using System.Net.Http
+@{
+    Page.Title = "Is IWS Up?";
+    Layout = "_Layout.cshtml";
+
+    var client = new HttpClient
+    {
+        BaseAddress = new Uri(ConfigurationManager.AppSettings["prsd:IwsUrl"])
+    };
+    var result = client.GetAsync("admin/smoke-test").Result;
+
+    var isIwsUp = result.IsSuccessStatusCode;
+}
+
+<div class="splash-container">
+    <div class="splash">
+        @if (isIwsUp)
+        {
+            <h1 class="splash-head">IWS is running!</h1>
+        }
+        else
+        {
+            <h1 class="splash-head">IWS is down!</h1>
+        }
+    </div>
+</div>
