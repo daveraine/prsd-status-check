@@ -71,7 +71,7 @@ nuget restore "%DEPLOYMENT_SOURCE%\PrsdStatusCheck\packages.config" -PackagesDir
 IF !ERRORLEVEL! NEQ 0 goto error
 
 :: 2. Build to the temporary path
-%MSBUILD_PATH% "%DEPLOYMENT_SOURCE%\PrsdStatusCheck.sln" /nologo /verbosity:m /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="%DEPLOYMENT_TEMP%";AutoParameterizationWebConfigConnectionStrings=false;Configuration=Release /p:SolutionDir="%DEPLOYMENT_SOURCE%"
+"%MSBUILD_PATH%" "%DEPLOYMENT_SOURCE%\PrsdStatusCheck.sln" /nologo /verbosity:m /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="%DEPLOYMENT_TEMP%";AutoParameterizationWebConfigConnectionStrings=false;Configuration=Release /p:SolutionDir="%DEPLOYMENT_SOURCE%"
 IF !ERRORLEVEL! NEQ 0 goto error
 
 :: 3. KuduSync
