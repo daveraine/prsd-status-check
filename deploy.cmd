@@ -67,7 +67,7 @@ IF NOT DEFINED MSBUILD_PATH (
 echo Handling .NET Web Application deployment.
 
 :: 1. Restore NuGet packages
-nuget restore "%DEPLOYMENT_SOURCE%\PrsdStatusCheck\packages.config" -PackagesDirectory "%DEPLOYMENT_SOURCE%"
+nuget restore "%DEPLOYMENT_SOURCE%\PrsdStatusCheck\packages.config" -PackagesDirectory "%DEPLOYMENT_SOURCE%\packages"
 IF !ERRORLEVEL! NEQ 0 goto error
 
 :: 2. Build to the temporary path
